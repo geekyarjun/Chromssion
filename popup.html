@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>URL Backup</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-feature-settings: "calt", "kern", "liga", "ss03";
+      background: #07080a;
+      color: #f4f4f6;
+      width: 260px;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      border-bottom: 1px solid #242728;
+    }
+    .header-left { display: flex; align-items: center; gap: 8px; }
+    .status-dot {
+      width: 6px; height: 6px;
+      border-radius: 9999px;
+      background: #59d499;
+      box-shadow: 0 0 6px rgba(89,212,153,0.6);
+    }
+    .title { font-size: 14px; font-weight: 500; letter-spacing: 0.2px; }
+    .badge {
+      background: #101111;
+      color: rgba(255,255,255,0.72);
+      font-size: 11px;
+      letter-spacing: 0.4px;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .stat-row {
+      padding: 14px 16px;
+      border-bottom: 1px solid #242728;
+    }
+    .stat-label { font-size: 11px; color: #6a6b6c; letter-spacing: 0.4px; text-transform: uppercase; margin-bottom: 2px; }
+    .stat-value { font-size: 24px; font-weight: 500; color: #f4f4f6; }
+    .actions { padding: 12px 16px; display: flex; flex-direction: column; gap: 6px; }
+    .btn {
+      width: 100%; height: 36px;
+      border-radius: 8px; border: none;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-feature-settings: "calt", "kern", "liga", "ss03";
+      font-size: 14px; font-weight: 500; letter-spacing: 0.2px;
+      cursor: pointer; transition: background 0.1s;
+    }
+    .btn-primary { background: #ffffff; color: #000000; }
+    .btn-primary:hover { background: #e8e8e8; }
+    .btn-tertiary { background: #101111; color: #ffffff; border: 1px solid #242728; }
+    .btn-tertiary:hover { background: #121212; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-left">
+      <div class="status-dot"></div>
+      <span class="title">URL Backup</span>
+    </div>
+    <span class="badge">Active</span>
+  </div>
+  <div class="stat-row">
+    <div class="stat-label">Records</div>
+    <div class="stat-value" id="totalCount">—</div>
+  </div>
+  <div class="actions">
+    <button class="btn btn-primary" id="dashboardBtn">Open Dashboard</button>
+    <button class="btn btn-tertiary" id="exportBtn">Export to Downloads</button>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

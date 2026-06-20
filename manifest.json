@@ -1,0 +1,48 @@
+{
+  "manifest_version": 3,
+  "name": "URL Backup",
+  "version": "1.0.0",
+  "description": "Automatically records and backs up all URLs visited across windows and tabs.",
+  "permissions": [
+    "tabs",
+    "windows",
+    "storage",
+    "downloads",
+    "alarms",
+    "identity"
+  ],
+  "host_permissions": [
+    "https://www.googleapis.com/*",
+    "https://accounts.google.com/*",
+    "https://www.google.com/s2/favicons*"
+  ],
+  "oauth2": {
+    "client_id": "669089070136-05rmecv3dld7ugot9bihb4uegnol23fe.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/drive.file"
+    ]
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "options_page": "options.html",
+  "web_accessible_resources": [
+    {
+      "resources": ["dashboard.html"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

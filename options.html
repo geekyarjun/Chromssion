@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>URL Backup — Settings</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-feature-settings: "calt", "kern", "liga", "ss03";
+      background: #07080a;
+      color: #f4f4f6;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 24px;
+    }
+
+    .card {
+      background: #0d0d0d;
+      border: 1px solid #242728;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 440px;
+      overflow: hidden;
+    }
+
+    .card-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid #242728;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 9999px;
+      background: #59d499;
+      box-shadow: 0 0 6px rgba(89,212,153,0.6);
+      flex-shrink: 0;
+    }
+    .card-title {
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 0.2px;
+      color: #f4f4f6;
+    }
+    .card-subtitle {
+      font-size: 13px;
+      color: #6a6b6c;
+      letter-spacing: 0.1px;
+      line-height: 1.4;
+      margin-top: 2px;
+    }
+
+    .card-body { padding: 20px 24px; }
+
+    .field { margin-bottom: 20px; }
+    .field-label {
+      font-size: 12px;
+      font-weight: 500;
+      color: #9c9c9d;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .retention-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+    }
+    .option-btn {
+      background: #101111;
+      border: 1px solid #242728;
+      border-radius: 8px;
+      color: #cdcdcd;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-feature-settings: "calt", "kern", "liga", "ss03";
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.1px;
+      padding: 8px 4px;
+      cursor: pointer;
+      text-align: center;
+      line-height: 1.4;
+      transition: background 0.1s, border-color 0.1s, color 0.1s;
+    }
+    .option-btn:hover {
+      background: #121212;
+      border-color: rgba(255,255,255,0.16);
+      color: #f4f4f6;
+    }
+    .option-btn.active {
+      background: #ffffff;
+      border-color: #ffffff;
+      color: #000000;
+      font-weight: 500;
+    }
+
+    .divider {
+      height: 1px;
+      background: #242728;
+      margin: 0 -24px 20px;
+    }
+
+    .card-footer {
+      padding: 16px 24px;
+      border-top: 1px solid #242728;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .status-text {
+      font-size: 12px;
+      color: #59d499;
+      letter-spacing: 0.1px;
+      min-height: 16px;
+    }
+    .status-text.error { color: #ff6161; }
+
+    .btn-primary {
+      height: 36px;
+      padding: 0 16px;
+      background: #ffffff;
+      color: #000000;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-feature-settings: "calt", "kern", "liga", "ss03";
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.2px;
+      cursor: pointer;
+      transition: background 0.1s;
+      white-space: nowrap;
+    }
+    .btn-primary:hover { background: #e8e8e8; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+          <div class="status-dot"></div>
+          <span class="card-title">URL Backup</span>
+        </div>
+        <div class="card-subtitle">All visited URLs are recorded locally and synced to Google Drive hourly.</div>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Retention period</div>
+        <div class="retention-grid" id="retentionOptions">
+          <button class="option-btn" data-days="7">7d</button>
+          <button class="option-btn" data-days="14">14d</button>
+          <button class="option-btn" data-days="30">30d</button>
+          <button class="option-btn" data-days="60">60d</button>
+          <button class="option-btn" data-days="90">90d</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-footer">
+      <span class="status-text" id="status"></span>
+      <button class="btn-primary" id="saveBtn">Save</button>
+    </div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>
